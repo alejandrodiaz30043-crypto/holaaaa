@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Una invitación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside id="falling-bg" class="falling-bg" aria-hidden="true"></aside>
+
+<main class="stage">
+
+  <!-- Pantalla 1: rollo cerrado -->
+  <section id="screen-intro" class="screen is-active">
+    <span class="candle-glow" aria-hidden="true"></span>
+    <button id="btn-open" class="scroll-closed" aria-label="Abrir el rollo">
+      <svg viewBox="0 0 200 280" class="scroll-closed-svg" aria-hidden="true">
+        <rect x="30" y="20" width="16" height="240" rx="8" fill="#5C3A22" stroke="#2E1C10" stroke-width="1.5"/>
+        <rect x="154" y="20" width="16" height="240" rx="8" fill="#5C3A22" stroke="#2E1C10" stroke-width="1.5"/>
+        <circle cx="38" cy="20" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="162" cy="20" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="38" cy="260" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="162" cy="260" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <rect x="46" y="34" width="108" height="212" rx="4" fill="#D3B67F"/>
+        <rect x="46" y="34" width="108" height="212" rx="4" fill="url(#closedShade)"/>
+        <defs>
+          <linearGradient id="closedShade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#00000022"/>
+            <stop offset="50%" stop-color="#00000000"/>
+            <stop offset="100%" stop-color="#00000022"/>
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="140" r="16" fill="#B24A3E"/>
+        <circle cx="100" cy="140" r="16" fill="none" stroke="#7A2E24" stroke-width="1"/>
+        <circle cx="100" cy="140" r="5" fill="#8F3629"/>
+      </svg>
+      <span class="tap-hint">Toca para abrir</span>
+    </button>
+  </section>
+
+  <!-- Pantalla 2: la carta -->
+  <section id="screen-letter" class="screen">
+    <article class="parchment">
+      <svg class="parchment-bg" viewBox="0 0 340 560" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="parchGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#EAD9AE"/>
+            <stop offset="55%" stop-color="#D3B67F"/>
+            <stop offset="100%" stop-color="#B8996A"/>
+          </linearGradient>
+        </defs>
+        <rect x="34" y="36" width="16" height="488" rx="8" fill="#5C3A22" stroke="#2E1C10" stroke-width="1.5"/>
+        <rect x="290" y="36" width="16" height="488" rx="8" fill="#5C3A22" stroke="#2E1C10" stroke-width="1.5"/>
+        <circle cx="42" cy="36" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="298" cy="36" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="42" cy="524" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <circle cx="298" cy="524" r="10" fill="#7A5230" stroke="#2E1C10"/>
+        <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+          <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#3A2410" stop-opacity="0.45"/>
+        </radialGradient>
+        <path d="M50 56 Q80 44 110 58 Q140 46 170 58 Q200 46 230 58 Q260 44 290 56 L290 76 Q260 62 230 76 Q200 62 170 76 Q140 62 110 76 Q80 62 50 76 Z" fill="#C9A876"/>
+        <rect x="50" y="68" width="240" height="424" fill="url(#parchGrad)"/>
+        <path d="M50 480 Q80 494 110 480 Q140 492 170 480 Q200 492 230 480 Q260 494 290 480 L290 504 Q260 490 230 504 Q200 490 170 504 Q140 490 110 504 Q80 490 50 504 Z" fill="#B8996A"/>
+        <g opacity="0.35" stroke="#8A6A3C" stroke-width="1" fill="none">
+          <path d="M70 100 L86 116 L78 132"/>
+          <path d="M240 140 L256 128"/>
+          <path d="M90 300 L104 316 L96 332"/>
+          <path d="M220 260 L236 272"/>
+          <path d="M150 400 L162 414 L152 428"/>
+          <path d="M120 200 L132 212"/>
+          <path d="M190 340 L202 352 L192 364"/>
+        </g>
+        <g opacity="0.22" fill="#8A6633">
+          <circle cx="130" cy="150" r="8"/>
+          <circle cx="210" cy="220" r="10"/>
+          <circle cx="150" cy="360" r="7"/>
+          <circle cx="180" cy="110" r="6"/>
+          <circle cx="120" cy="440" r="8"/>
+        </g>
+        <g id="lilyDef">
+          <ellipse cx="0" cy="-7" rx="3" ry="7" fill="#ED93B1" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="7" fill="#F4C0D1" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="7" fill="#ED93B1" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="7" fill="#F4C0D1" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="7" fill="#ED93B1" transform="rotate(288)"/>
+          <circle cx="0" cy="0" r="3" fill="#FAC775"/>
+        </g>
+        <use href="#lilyDef" x="60" y="66"/><use href="#lilyDef" x="76" y="86"/><use href="#lilyDef" x="60" y="106"/>
+        <use href="#lilyDef" x="76" y="126"/><use href="#lilyDef" x="60" y="146"/><use href="#lilyDef" x="76" y="166"/>
+        <use href="#lilyDef" x="60" y="186"/><use href="#lilyDef" x="76" y="206"/><use href="#lilyDef" x="60" y="226"/>
+        <use href="#lilyDef" x="76" y="246"/><use href="#lilyDef" x="60" y="266"/><use href="#lilyDef" x="76" y="286"/>
+        <use href="#lilyDef" x="60" y="306"/><use href="#lilyDef" x="76" y="326"/><use href="#lilyDef" x="60" y="346"/>
+        <use href="#lilyDef" x="76" y="366"/><use href="#lilyDef" x="60" y="386"/><use href="#lilyDef" x="76" y="406"/>
+        <use href="#lilyDef" x="60" y="426"/><use href="#lilyDef" x="76" y="446"/><use href="#lilyDef" x="60" y="466"/>
+        <use href="#lilyDef" x="280" y="66"/><use href="#lilyDef" x="264" y="86"/><use href="#lilyDef" x="280" y="106"/>
+        <use href="#lilyDef" x="264" y="126"/><use href="#lilyDef" x="280" y="146"/><use href="#lilyDef" x="264" y="166"/>
+        <use href="#lilyDef" x="280" y="186"/><use href="#lilyDef" x="264" y="206"/><use href="#lilyDef" x="280" y="226"/>
+        <use href="#lilyDef" x="264" y="246"/><use href="#lilyDef" x="280" y="266"/><use href="#lilyDef" x="264" y="286"/>
+        <use href="#lilyDef" x="280" y="306"/><use href="#lilyDef" x="264" y="326"/><use href="#lilyDef" x="280" y="346"/>
+        <use href="#lilyDef" x="264" y="366"/><use href="#lilyDef" x="280" y="386"/><use href="#lilyDef" x="264" y="406"/>
+        <use href="#lilyDef" x="280" y="426"/><use href="#lilyDef" x="264" y="446"/><use href="#lilyDef" x="280" y="466"/>
+        <use href="#lilyDef" x="120" y="60"/><use href="#lilyDef" x="150" y="66"/><use href="#lilyDef" x="190" y="60"/><use href="#lilyDef" x="220" y="66"/>
+        <use href="#lilyDef" x="120" y="490"/><use href="#lilyDef" x="150" y="484"/><use href="#lilyDef" x="190" y="490"/><use href="#lilyDef" x="220" y="484"/>
+        <g id="pengDef">
+          <ellipse cx="0" cy="5" rx="5" ry="6.5" fill="#3A3A38"/>
+          <ellipse cx="0" cy="6.5" rx="2.7" ry="3.6" fill="#FDFBF6"/>
+          <path d="M-1.3 2.2 L1.3 2.2 L0 4.6 Z" fill="#EF9F27"/>
+        </g>
+        <use href="#pengDef" x="68" y="116"/><use href="#pengDef" x="68" y="256"/><use href="#pengDef" x="68" y="396"/>
+        <use href="#pengDef" x="272" y="136"/><use href="#pengDef" x="272" y="276"/><use href="#pengDef" x="272" y="416"/>
+        <use href="#pengDef" x="140" y="72"/><use href="#pengDef" x="200" y="478"/>
+        <path d="M220 424 Q216 440 224 456" fill="none" stroke="#7A2E24" stroke-width="2"/>
+        <circle cx="220" cy="460" r="19" fill="#B24A3E"/>
+        <circle cx="220" cy="460" r="19" fill="none" stroke="#7A2E24" stroke-width="1.5"/>
+        <circle cx="220" cy="460" r="12" fill="none" stroke="#7A2E24" stroke-width="0.75"/>
+        <circle cx="220" cy="460" r="4" fill="#8F3629"/>
+        <rect x="50" y="68" width="240" height="424" fill="url(#vignette)"/>
+      </svg>
+      <section class="parchment-content">
+        <p id="letter-text" class="letter-text"></p>
+        <button id="btn-continue-letter" class="btn-ghost is-hidden">Seguir</button>
+      </section>
+    </article>
+  </section>
+
+  <!-- Pantalla 3: sí / no -->
+  <section id="screen-question" class="screen">
+    <section class="question-card">
+      <h2 class="question-text">¿Quieres salir conmigo?</h2>
+      <menu class="question-buttons" id="question-buttons" aria-label="Elige tu respuesta">
+        <button id="btn-yes" class="btn-yes" type="button">Sí</button>
+        <button id="btn-no" class="btn-no" type="button">No</button>
+      </menu>
+    </section>
+  </section>
+
+  <!-- Pantalla 4: planes -->
+  <section id="screen-plans" class="screen">
+    <p class="step-label">Elige un plan</p>
+    <ol class="progress-dots" aria-label="Paso 1 de 3"><li class="dot is-active"></li><li class="dot"></li><li class="dot"></li></ol>
+    <ul id="plans-carousel" class="plans-carousel"></ul>
+    <p class="swipe-hint">← desliza para ver más →</p>
+    <button id="btn-continue-plan" class="btn-primary is-hidden">Continuar</button>
+    <button id="btn-back-plan" class="btn-back">‹ volver</button>
+  </section>
+
+  <!-- Pantalla 5: calendario -->
+  <section id="screen-calendar" class="screen">
+    <p class="step-label">Elige el día</p>
+    <ol class="progress-dots" aria-label="Paso 2 de 3"><li class="dot"></li><li class="dot is-active"></li><li class="dot"></li></ol>
+    <section class="calendar-card">
+      <table class="calendar-table" aria-label="Selecciona el día de la salida">
+        <caption id="calendar-month" class="calendar-month"></caption>
+        <thead>
+          <tr class="calendar-weekdays">
+            <th scope="col">D</th><th scope="col">L</th><th scope="col">M</th><th scope="col">M</th><th scope="col">J</th><th scope="col">V</th><th scope="col">S</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-days" class="calendar-days"></tbody>
+      </table>
+    </section>
+    <button id="btn-continue-day" class="btn-primary is-hidden">Continuar</button>
+    <button id="btn-back-day" class="btn-back">‹ volver</button>
+  </section>
+
+  <!-- Pantalla 6: confirmación -->
+  <section id="screen-confirm" class="screen">
+    <ol class="progress-dots" aria-label="Paso 3 de 3"><li class="dot"></li><li class="dot"></li><li class="dot is-active"></li></ol>
+    <section id="confetti-stage" class="confetti-stage" aria-label="Confirmación">
+      <p id="confirm-text" class="confirm-text"></p>
+      <span id="confirm-penguin" class="confirm-penguin is-hidden" aria-hidden="true">🐧</span>
+      <button id="btn-confirm" class="btn-primary">Confirmar</button>
+      <p id="sent-note" class="sent-note is-hidden">Toca enviar en WhatsApp para avisarle 💌</p>
+    </section>
+  </section>
+
+</main>
+
+<audio id="bg-music" src="cancion.mp4" preload="auto" loop></audio>
+<button id="btn-mute" class="btn-mute is-hidden" aria-label="Silenciar música">🔊</button>
+
+<script src="script.js"></script>
+</body>
+</html>
