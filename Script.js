@@ -1,26 +1,7 @@
-/* ============================================================
-   CONFIGURACIÓN — esto es lo único que tienes que editar tú
-   ============================================================ */
-
-// Tu nombre y (si quieres) el de ella. Si lo dejas vacío, no aparece.
-const MI_NOMBRE = "";          // ej: "Alejandro"
-const SU_NOMBRE = "";          // ej: "Ana" — si está vacío se usa "hola,"
-
-// La música de fondo usa el archivo cancion.mp4 (súbelo junto a estos archivos
-// en la misma carpeta). Si quieres cambiar la canción, reemplaza ese archivo
-// por otro con el mismo nombre, o cambia el atributo src en el <audio> de index.html.
-
-// Si quieres limitar a días específicos, pon aquí los números (ej: [4, 5, 11, 12]).
-// Si lo dejas vacío [], cualquier día futuro del mes queda disponible para elegir.
+const MI_NOMBRE = "";
+const SU_NOMBRE = "";
 const AVAILABLE_DAYS = [];
-
-// Tu número de WhatsApp con código de país, sin "+", sin espacios ni guiones.
-// Ejemplo Colombia: si tu celular es 300 123 4567, pon "573001234567"
-const MI_WHATSAPP = "573227325292"; // <-- tu número
-
-/* ============================================================
-   CONTENIDO — textos de la carta
-   ============================================================ */
+const MI_WHATSAPP = "573227325292";
 
 const saludo = SU_NOMBRE ? `Hola ${SU_NOMBRE},` : "Hola,";
 const firma = MI_NOMBRE ? `— ${MI_NOMBRE}` : "—";
@@ -52,23 +33,14 @@ const PLANS = [
   { icon: "🛍️", name: "Mercado de Usaquén", desc: "Ferias, artesanías y algo rico de comer" }
 ];
 
-/* ============================================================
-   ESTADO
-   ============================================================ */
 let selectedPlan = null;
 let selectedDay = null;
 
-/* ============================================================
-   NAVEGACIÓN ENTRE PANTALLAS
-   ============================================================ */
 function showScreen(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("is-active"));
   document.getElementById(id).classList.add("is-active");
 }
 
-/* ============================================================
-   PANTALLA 1 -> 2: abrir el rollo
-   ============================================================ */
 document.getElementById("btn-open").addEventListener("click", (e) => {
   playPaperSound();
   playMusic();
@@ -79,7 +51,6 @@ document.getElementById("btn-open").addEventListener("click", (e) => {
   }, 340);
 });
 
-/* Sonido corto de papel, generado con Web Audio (no necesita archivo de audio aparte) */
 function playPaperSound() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -104,14 +75,13 @@ function playPaperSound() {
   }
 }
 
-/* Efecto máquina de escribir para la carta */
 function typeLetter() {
   const el = document.getElementById("letter-text");
   const btn = document.getElementById("btn-continue-letter");
   el.textContent = "";
   btn.classList.add("is-hidden");
   let i = 0;
-  const speed = 18; // ms por letra
+  const speed = 18;
   function step() {
     if (i <= LETTER_TEXT.length) {
       el.textContent = LETTER_TEXT.slice(0, i);
@@ -128,9 +98,6 @@ document.getElementById("btn-continue-letter").addEventListener("click", () => {
   showScreen("screen-question");
 });
 
-/* ============================================================
-   PANTALLA 3: botón "sí" que crece, "no" que se escapa
-   ============================================================ */
 const noBtn = document.getElementById("btn-no");
 const yesBtn = document.getElementById("btn-yes");
 const questionButtons = document.getElementById("question-buttons");
@@ -164,13 +131,10 @@ yesBtn.addEventListener("click", () => {
   renderPlans();
 });
 
-/* ============================================================
-   PANTALLA 4: carrusel de planes
-   ============================================================ */
 function renderPlans() {
   const container = document.getElementById("plans-carousel");
   container.innerHTML = "";
-  PLANS.forEach((plan, index) => {
+  PLANS.forEach((plan) => {
     const card = document.createElement("li");
     card.className = "plan-card";
     card.setAttribute("role", "button");
@@ -207,9 +171,6 @@ document.getElementById("btn-back-day").addEventListener("click", () => {
   showScreen("screen-plans");
 });
 
-/* ============================================================
-   PANTALLA 5: calendario del mes actual
-   ============================================================ */
 const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 
 function renderCalendar() {
@@ -274,9 +235,6 @@ document.getElementById("btn-continue-day").addEventListener("click", () => {
     `¿Confirmamos el ${selectedDay} de ${monthName} para ${selectedPlan.name}?`;
 });
 
-/* ============================================================
-   PANTALLA 6: confirmar, confeti y notificación
-   ============================================================ */
 document.getElementById("btn-confirm").addEventListener("click", () => {
   const monthName = MESES[new Date().getMonth()];
   document.getElementById("confirm-text").textContent = "¡Nos vemos pronto!";
@@ -329,10 +287,6 @@ function launchConfettiFromCorners() {
   burstFrom(w, h, -w * 0.4, -h * 0.3);
 }
 
-/* Abre WhatsApp con el mensaje ya escrito, dirigido a tu número.
-   Importante: quien confirma el plan tiene que tocar "Enviar" dentro de
-   WhatsApp para que el mensaje realmente te llegue — no se envía solo.
-   Si no configuraste MI_WHATSAPP, no hace nada. */
 function openWhatsAppNotification(text) {
   if (!MI_WHATSAPP) {
     console.warn("Falta configurar MI_WHATSAPP en script.js");
@@ -342,9 +296,6 @@ function openWhatsAppNotification(text) {
   window.open(url, "_blank");
 }
 
-/* ============================================================
-   MÚSICA DE FONDO (archivo de audio propio)
-   ============================================================ */
 const bgMusic = document.getElementById("bg-music");
 let musicMuted = false;
 
@@ -358,9 +309,6 @@ function playMusic() {
   });
 }
 
-/* ============================================================
-   LLUVIA DE FONDO: lirios y corazones cayendo lentamente
-   ============================================================ */
 const FALLING_SYMBOLS = [
   { ch: "❀", color: "#ED93B1" },
   { ch: "❁", color: "#9FE1CB" },
